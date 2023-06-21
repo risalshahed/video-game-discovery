@@ -1,8 +1,9 @@
 import { Game } from '../hooks/useGames';
-import { Card, CardBody, HStack, Heading, Image, Text } from '@chakra-ui/react';
+import { Card, CardBody, HStack, Heading, Image } from '@chakra-ui/react';
 import PlarformIconList from './PlarformIconList';
 import CriticScore from './CriticScore';
 import getCroppedImageUrl from '../services/image-url';
+import Emoji from './Emoji';
 
 interface Props {
     eachGame: Game
@@ -10,21 +11,20 @@ interface Props {
 
 const GameCard = ({ eachGame }: Props) => {
     return (
-        // **** "GameCardSkeleton" er Skeleton (ONURUP/ SIMILAR) style
-        <Card width='300px' borderRadius={10} overflow='hidden'>
-            {/* <Image src={eachGame.background_image} /> */}
-            {/* "Lecture_14" Optimized Images */}
+        <Card>
             <Image src={ getCroppedImageUrl( eachGame.background_image ) } />
             <CardBody>
-                <Heading fontSize='2xl'>{eachGame.name}</Heading>
-                <HStack justifyContent='space-between'>
+                <HStack marginBottom={3} justifyContent='space-between'>
                     <PlarformIconList
                         platforms={eachGame.parent_platforms.map(
-                            p => p.platform
+                          p => p.platform
                         )}
                     />
                     <CriticScore score={eachGame.metacritic} />
                 </HStack>
+                <Heading fontSize='2xl'>
+                  {eachGame.name}<Emoji rating={eachGame.rating_top} />
+                </Heading>
             </CardBody>
         </Card>
     );

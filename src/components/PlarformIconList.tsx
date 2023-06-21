@@ -19,12 +19,8 @@ interface Props {
 }
 
 const PlarformIconList = ({ platforms }: Props) => {
-    // emne square bracket diye type dewa k "index_signature" bole
-    // it means, "iconMap" Object has any number of keys with string type, we don't care about the names!
-    // and each key is mapped to the value of the IconType (defined it react icons library)
+    
     const iconMap: { [key: string]: IconType } = {
-        /* name: PlayStation
-        slug (key): playstation */
         pc: FaWindows,
         playstation: FaPlaystation,
         xbox: FaXbox,
@@ -40,8 +36,7 @@ const PlarformIconList = ({ platforms }: Props) => {
         <HStack marginY={2.5}>  {/* {1} === '4px' */}
             {
                 platforms.map(platform => 
-                    // <Text>{platform.name}</Text>
-                    <Icon as={iconMap[platform.slug]} color='gray.500' />
+                    <Icon key={platform.id} as={iconMap[platform.slug]} color='gray.500' />
                 )
             }
         </HStack>
