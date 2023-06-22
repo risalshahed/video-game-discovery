@@ -1,5 +1,7 @@
 # video-game-discovery
 
+##[Live Demo]https://video-game-eta.vercel.app/
+
 ## Functionalities
 * Dark mode added & it can be toggled with light mode
 * Search and Sort filter added
